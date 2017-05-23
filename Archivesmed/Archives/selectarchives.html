@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+    <script language="JavaScript" type="text/javascript">
+    <!--
+    function formatdate(date1)
+    		{
+    		date = new String(date1);
+    		if (date.indexOf("/")==-1)
+    			{
+    			if (date.length==6) 
+    				{
+    				date = date.substr(0,2) + "/" + date.substr(2,2)+"/20"+date.substr(4,2)
+    				}
+    			else 
+     			if (date.length==8) 
+     				{ date = date.substr(0,2) + "/" + date.substr(2,2)+"/"+date.substr(4,4)};
+   			}
+   		else
+   			{
+   			ArrayDate=date.split("/");
+   			if (ArrayDate[0].length==1){ArrayDate[0] = "0"+ ArrayDate[0];}
+   			if (ArrayDate[1].length==1){ArrayDate[1] = "0"+ ArrayDate[1];}
+   			if (ArrayDate[2].length==2){ArrayDate[2] = "20"+ ArrayDate[2];}
+   			date = ArrayDate.join("/");
+   			}
+   	
+   	return date;
+    }
+    function formatdate1()
+    {
+	document.forms['mouvement'].DATEDEBUT.value=formatdate(document.forms['mouvement'].DATEDEBUT.value);
+    }
+        function formatdate2()
+    {
+	document.forms['mouvement'].DATEFIN.value=formatdate(document.forms['mouvement'].DATEFIN.value);
+    }
+	-->
+
+</script>
+
+<title>Archives Médicales</title>
+</head>
+
+<body bgcolor="#E1E1E1">
+<p><img src="../images/titres/archives.gif" alt="Archives M&eacute;dicales"" WIDTH="421" HEIGHT="59"></p>
+  <span style="font-family: trebuchet ms, arial, helvetica; font-size: 7pt;">Conception
+      et réalisation DIM CH CAHORS </span>
+<p><font size="4" face="Arial"></font>&nbsp;</p>
+
+<p><b><font size="4" face="Arial">SELECTION DES MOUVEMENTS DE
+DOSSIER </font></b></p>
+
+<form name="mouvement" method="POST" Action="selectarchive.php">
+     <TABLE HEIGHT=150>
+    <TR><TD>
+   <b><font size="4" face="Arial">Mouvements </font></b></TD>
+   <TD> <select
+    name="SITUATION" size="1"> 
+        <option value="E">Entrée</option>
+        <option value="S">Sortie</option> </TD>
+    </select></TR>
+    <TR><TD><font size="4" face="Arial"><b>Service </b></font></TD>
+    <TD> <font face="Arial"><input type="text" size="10" MAXLENGTH="10" name="SERVICE" ></TD></TR>
+	<TR><TD>
+    <font size="4" face="Arial"><b>Période du </b></font> </TD><TD><font
+    face="Arial"><input type="text" size="10" MAXLENGTH="10" name="DATEDEBUT" onblur="formatdate1();">
+   <b> Au </b></font><input type="text" size="10" MAXLENGTH="10" name="DATEFIN" onblur="formatdate2();"></TD></TR>
+
+<TR><TD><font size="4" face="Arial"><b>Exercice </b></font></TD><TD> <input type="text" size="10" MAXLENGTH="10" name="EXERCICE" >  </TD></TR>
+</TABLE>
+    <p><input type="submit" name="Rechercher" value="Rechercher"></p>
+</form>
+</body>
+</html>
